@@ -1,0 +1,12 @@
+1) 
+2)
+3) os.getcwd() returns current working directory, os.chdir(path) changes current directory to given in parameter 'path'
+4) The '..' folder is a folder that is 1 step up current directory (example: for 'C://test/folder' os.chdir('..') returns 'C://test' directory)
+   The '.' allows to walk is subdirectories of current directory (example: for 'C://test'   os.chdir('.folder')  gets us in directory 'C://test/folder')
+5) 'C://bacon/eggs' is dirname,  'spam.txt' is basename
+6) 'r'  is default mode value, opens file (error if not exists) for reading
+   'a'  opens file (creates if there is no such file) for appending
+   'w' opens file (creates if there is no such file) for writing
+7) If existing file has something written earlier than this would be deleted
+8) read() takes whole file as an individual string, readlines() takes one string of file at each step
+9) shelf value resembles dictionary data structure
