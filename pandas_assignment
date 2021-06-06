@@ -1,0 +1,76 @@
+import json
+import pandas as pd
+import requests
+
+# 1
+
+df = pd.read_csv('https://raw.githubusercontent.com/guipsamora/pandas_exercises/master/04_Apply/US_Crime_Rates/US_Crime_Rates_1960_2014.csv')
+
+df.head()
+
+max(df['Year'])
+
+steal = ['Robbery', 'Burglary', 'Larceny_Theft', 'Vehicle_Theft']
+
+#summing all 'stealing' crimes
+sum = df[steal].sum(axis = 1)
+
+#percentage of 'stealing' crimes out of all crimes
+df['Percentage of stealing per all crimes'] = sum / df['Total']
+
+df.head()
+
+#percentage of murders + violent per population
+df['Percent of murdered +violent per population'] = (df['Murder'] + df['Violent']) / df['Population']
+
+df.head()
+
+#Info about year where was maximum of murders + violent
+df[(df['Murder'] + df['Violent']) == max(df['Murder'] + df['Violent'])]
+
+# 2
+
+df2 = pd.read_csv('https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/datasets.csv')
+
+df2.head()
+
+#first 5 datasets with maximum Rows
+df2.sort_values(by = 'Rows', ascending = False)[:5]
+
+# 3
+
+df3 = pd.read_csv('https://raw.githubusercontent.com/justmarkham/DAT8/master/data/beer.txt', sep = ' ')
+
+df3.head()
+
+#in order to consume as much alcohol as we can let's compute the price of 1% of alcohol for each position and pick 3 cheapest 
+df3['Price of 1% of alcohol'] = df3['cost'] / df3['alcohol']
+
+df3.head()
+
+#lets sort and pick first 3 products
+df3.sort_values(by = 'Price of 1% of alcohol', ascending = True)[:3]
+
+# 4
+
+df4 = pd.read_csv('https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv', sep = '\t')
+
+df4.head()
+
+x = df4['item_price']
+
+dollar_str = lambda x: x.replace('$', '')
+df4_dollar_str = df4['item_price'].apply(dollar_str)
+
+dollar_float = lambda x: float(x)
+
+df4['Dollars'] = df4_dollar_str.apply(dollar_float)
+
+df4.head()
+
+df4['Total_price'] = df4['Dollars'] * df4['quantity']
+
+df4.head()
+
+pwd()
+
